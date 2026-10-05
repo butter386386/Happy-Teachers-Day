@@ -1,5 +1,4 @@
-
-            import streamlit as st
+import streamlit as st
 
 st.set_page_config(page_title="Happy Teacher's Day!", page_icon="💻", layout="centered")
 
@@ -30,5 +29,4 @@ st.info("### To My Favorite Tech Mentor 👩‍💻")
 st.write("Dear **Mam Kiran Nabi**,\n\nThank you for turning complex logic into simple understanding and making computer science so engaging. You don't just teach code; you inspire us to debug our mistakes and upgrade ourselves every day!")
 
 if st.button("Click to Compile Wish 🚀"):
-    st.success("🎉 System.out.println('Happy Teacher's Day, Mam Kiran Nabi! You are legendary!'); 🎉")
-butter386386/Happy-Teachers-Day
+    st.success("🎉 System.out.println('Happy Teacher\\'s Day, Mam Kiran Nabi! You are legendary!'); 🎉")
