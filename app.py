@@ -1,207 +1,166 @@
 import streamlit as st
-import time
-import random
+import datetime
 
-# 1. Page Settings
+# 1. Page Configuration
 st.set_page_config(
-    page_title="Teacher's Day Apology Matrix",
-    page_icon="🎈",
+    page_title="Teacher's Daily Companion & Apology Workspace",
+    page_icon="🇨🇳",
     layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
-# 2. Ultra-Vibrant Custom CSS Styling
+# 2. Ultra-Bright, Professional Pastel Theme Styling
 st.markdown(
     """
     <style>
-    /* Full page gradient background */
+    /* Clean, ultra-bright gradient background */
     .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+        background: linear-gradient(135deg, #f0f4f8 0%, #e6fffa 50%, #fff5f5 100%);
     }
     
-    /* Neon glowing headings */
-    .neon-title {
-        font-size: 3.5rem;
+    /* Vibrant, elegant title font styling */
+    .bright-title {
+        font-size: 3rem;
         font-weight: 800;
-        background: linear-gradient(to right, #ff007f, #7928ca, #00dfd8);
+        background: linear-gradient(to right, #ff4b4b, #ff7675, #6c5ce7);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-        margin-bottom: 5px;
+        margin-bottom: 2px;
     }
-    .neon-sub {
-        color: #a5b4fc;
+    .bright-sub {
+        color: #2d3436;
         text-align: center;
-        font-size: 1.5rem;
-        font-family: monospace;
+        font-size: 1.3rem;
+        font-weight: 600;
         margin-bottom: 30px;
     }
 
-    /* Highly colorful alert and status cards */
-    .color-card-pink {
-        background: linear-gradient(135deg, rgba(255, 0, 127, 0.15), rgba(255, 0, 127, 0.05));
-        border: 2px solid #ff007f;
+    /* Premium bright, highly visible custom containers */
+    .utility-card {
+        background-color: #ffffff;
         padding: 25px;
         border-radius: 16px;
-        color: #fff;
-        box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border: 1px solid #e2e8f0;
+        margin-bottom: 20px;
     }
-    .color-card-cyan {
-        background: linear-gradient(135deg, rgba(0, 223, 216, 0.15), rgba(0, 223, 216, 0.05));
-        border: 2px solid #00dfd8;
-        padding: 25px;
-        border-radius: 16px;
-        color: #fff;
-        box-shadow: 0 0 15px rgba(0, 223, 216, 0.2);
-    }
-    
-    /* Rainbow progress styling overrides */
-    div.stProgress > div > div > div > div {
-        background-image: linear-gradient(to right, #ff007f, #7928ca, #00dfd8) !important;
+    .utility-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2d3436;
+        margin-bottom: 15px;
+        border-left: 5px solid #ff4b4b;
+        padding-left: 10px;
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# 3. Automatic Initial Balloon Splash
+# 3. Automatic Opening Balloon Welcome
 st.balloons()
 
-# 4. Colorful Hero Headers
-st.markdown("<h1 class='neon-title'>🎈 SPECIAL APOLOGY WORKSPACE 🎈</h1>", unsafe_allow_html=True)
-st.markdown("<p class='neon-sub'>[STATUS: SEVERELY_SORRY] // [TARGET: MY_COMPUTER_TEACHER]</p>", unsafe_allow_html=True)
+# 4. Bright Header Setup
+st.markdown("<h1 class='bright-title'>🎈 Welcome to Your Daily Expat Toolkit! 🇨🇳</h1>", unsafe_allow_html=True)
+st.markdown("<p class='bright-sub'>A Heartfelt Apology Turned into Something Useful Every Day</p>", unsafe_allow_html=True)
 
-# 5. Core Layout Columns
-col1, col2 = st.columns([1, 1], gap="large")
+# 5. The Core Apology Statement (Highly visible on white panel)
+with st.container(border=True):
+    st.markdown(
+        """
+        ### 👋 Dear Teacher,
+        I am so incredibly sorry for missing your Teacher's Day wish and requiring a reminder! 
+        Since you are currently exploring and working in **China**, I wanted to build you a live workspace that 
+        isn't just an apology, but a **practical tool you can use every single day** to navigate your environment!
+        """
+    )
+
+st.write("")
+
+# 6. Functional Two-Column Desktop Layout
+col1, col2 = st.columns(2, gap="large")
 
 with col1:
-    st.markdown("### 📥 System Status & Message Stack")
+    # FUNCTION 1: Live Local Currency Converter
+    st.markdown("<div class='utility-card'>", unsafe_allow_html=True)
+    st.markdown("<div class='utility-title'>💱 Real-Time CNY Shopping Converter</div>", unsafe_allow_html=True)
+    st.write("Quickly convert Chinese Yuan (RMB) to keep track of store prices:")
     
-    # Feature 1: High Contrast Neon Message Card
-    st.markdown(
-        """
-        <div class='color-card-pink'>
-            <h4 style='color: #ff007f; margin-top:0;'>⚠️ OVERDUE CORRECTION LOGGED</h4>
-            <p style='line-height: 1.6; font-size:16px;'>
-                <b>Dear Teacher,</b><br><br>
-                I am deeply sorry that I missed your actual Teacher's Day window. Having to be reminded of it felt like hitting an unhandled runtime crash! You spend so much energy correcting our syntax and building our logic; you absolutely deserve the best celebration stack. 
-                <br><br>Please accept this custom console patch as my official, sincerest apology. You are an outstanding educator!
-            </p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    cny_amount = st.number_input("Enter Amount in Chinese Yuan (¥):", min_value=0.0, value=10.0, step=1.0)
     
-    st.write("")
+    # Custom rate configuration slider (so she can adjust it easily without redeploying)
+    conversion_rate = st.slider("Current Exchange Rate (e.g., 1 USD to CNY):", min_value=1.0, max_value=100.0, value=7.25, step=0.01)
+    converted_val = cny_amount / conversion_rate
     
-    # Feature 2: Dynamic Live Metrics Matrix
-    st.markdown("#### 📊 Metric Array Verification")
-    m_col1, m_col2, m_col3 = st.columns(3)
-    with m_col1:
-        st.metric(label="Respect Constant", value="10.0 GHz", delta="▲ Max Capacity")
-    with m_col2:
-        st.metric(label="Apology Level", value="100%", delta="Verified", delta_color="off")
-    with m_col3:
-        st.metric(label="Balloons Left", value="Infinite 🎈", delta="Ready")
+    st.subheader(f"💵 Approx. Foreign Currency value: ${converted_val:.2f}")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    # FUNCTION 2: Global Dual Time Clock Matrix
+    st.markdown("<div class='utility-card'>", unsafe_allow_html=True)
+    st.markdown("<div class='utility-title'>🕒 Dual Time-Zone Synchronizer</div>", unsafe_allow_html=True)
+    st.write("Never mix up hours when scheduling calls or classes back home.")
+    
+    # Generate time calculations based on system time offsets
+    utc_now = datetime.datetime.now(datetime.timezone.utc)
+    china_time = utc_now + datetime.timedelta(hours=8)
+    
+    t_col1, t_col2 = st.columns(2)
+    with t_col1:
+        st.metric(label="🇨🇳 China Standard Time", value=china_time.strftime("%I:%M %p"))
+    with t_col2:
+        # Easy drop-down for her to sync to her home time zone offset
+        home_offset = st.selectbox("Select Your Home Timezone Offset (UTC):", options=list(range(-12, 15)), index=17) # Default index to typical home offset
+        home_time = utc_now + datetime.timedelta(hours=home_offset)
+        st.metric(label="🏠 Home Local Time", value=home_time.strftime("%I:%M %p"))
+    st.markdown("</div>", unsafe_allow_html=True)
 
 with col2:
-    st.markdown("### 🛠️ Interactive Configuration Panel")
+    # FUNCTION 3: Survival Phrasebook (Highly functional for a new expat!)
+    st.markdown("<div class='utility-card'>", unsafe_allow_html=True)
+    st.markdown("<div class='utility-title'>🗣️ Daily Expat Survival Phrasebook</div>", unsafe_allow_html=True)
+    st.write("Quickly copy-paste or read important phrases to locals while traveling:")
     
-    # Feature 3: Interactive Slider That Spams Balloons
-    st.markdown("#### 🎚️ Balloon Frequency Oscillator")
-    balloon_level = st.slider("Slide to scale the festive atmosphere:", 0, 100, 50)
-    if balloon_level > 75:
-        st.balloons()
-        st.toast("Warning: Balloon stack overflow reached! 🎉", icon="🎈")
-        
-    st.write("")
+    phrase_category = st.radio("Select Situation Matrix:", ["🚕 Taking a Taxi", "🍲 Ordering Food", "🛍️ Shopping & Payments"], horizontal=True)
     
-    # Feature 4: Interactive Forgiveness State Engine
-    st.markdown(
-        """
-        <div class='color-card-cyan'>
-            <h4 style='color: #00dfd8; margin-top:0;'>🔐 OVERRIDE INTERFACE</h4>
-            <p style='margin-bottom:15px;'>Execute patch sequence to clear the pending delay status flag:</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    
-    # State validation toggles
-    forgive_check = st.checkbox("Toggle to set 'Forgo_Oversight_Flag' = True 🥺👉👈")
-    
-    if forgive_check:
-        st.balloons()
-        st.success("Patch compiled! Status safely set to: NOMINAL. Thank you, Teacher!")
-        
-    st.write("")
+    if "Taxi" in phrase_category:
+        st.info("**Please take me to this address:**\n\n请带我去这个地址 (Qǐng dài wǒ qù zhège dìzhǐ)")
+        st.info("**Stop here, thank you:**\n\n请在这里停车，谢谢 (Qǐng zài zhèlǐ tíngchē, xièxiè)")
+    elif "Food" in phrase_category:
+        st.success("**I would like to order this:**\n\n我要点这个 (Wǒ yào diǎn zhège)")
+        st.success("**Not too spicy, please:**\n\n请不要太辣 (Qǐng bùyào tài là)")
+    elif "Shopping" in phrase_category:
+        st.warning("**How much is this?**\n\n这个多少钱？ (Zhège duōshǎo qián?)")
+        st.warning("**Can I pay with WeChat Pay?**\n\n可以用微信支付吗？ (Kěyǐ yòng Wēixìn zhīfù ma?)")
+    st.markdown("</div>", unsafe_allow_html=True)
 
-st.write("---")
-
-# 6. Full Width Feature Modules
-st.markdown("### ⚡ Multi-Functional Execution Tools")
-
-tab1, tab2, tab3 = st.tabs(["🎮 Multi-Balloon Launcher", "📂 Class Tribute Log", "💾 Structural System Script"])
-
-with tab1:
-    st.write("Need more celebration? Fire all interactive array triggers simultaneously:")
+    # FUNCTION 4: The Ultimate Interactive Balloon Triggers
+    st.markdown("<div class='utility-card'>", unsafe_allow_html=True)
+    st.markdown("<div class='utility-title'>🎈 The Stress-Relief Balloon Spam Zone</div>", unsafe_allow_html=True)
+    st.write("Click these custom buttons to trigger massive balloon cascades whenever class gets stressful!")
     
-    # Multiple custom buttons that generate balloons independently
-    b_col1, b_col2, b_col3, b_col4 = st.columns(4)
-    with b_col1:
-        if st.button("🔴 Fire Alpha Balloons", use_container_width=True):
+    b1, b2, b3 = st.columns(3)
+    with b1:
+        if st.button("🔴 Fire Red Waves", use_container_width=True, type="primary"):
             st.balloons()
-    with b_col2:
-        if st.button("🔵 Fire Beta Balloons", use_container_width=True):
+    with b2:
+        if st.button("🔵 Fire Blue Waves", use_container_width=True):
             st.balloons()
-    with b_col3:
-        if st.button("🟢 Fire Gamma Balloons", use_container_width=True):
+    with b3:
+        if st.button("🟢 Fire Green Waves", use_container_width=True):
             st.balloons()
-    with b_col4:
-        if st.button("🟡 Fire Delta Balloons", use_container_width=True):
-            st.balloons()
-
-with tab2:
-    # Feature 5: Progress indicator tracker simulation
-    st.write("Calculating complete educator performance indexes...")
-    progress_bar = st.progress(0)
-    for percent_complete in range(100):
-        time.sleep(0.005)
-        progress_bar.progress(percent_complete + 1)
-    
-    st.markdown(
-        """
-        - **Patience Loop Index:** 100% stable execution under student pressure.
-        - **Syntax Debugging Speed:** Faster than local IDE compiler parameters.
-        - **Inspirational Factor:** Operates at peak infinity.
-        """
-    )
-
-with tab3:
-    # Feature 6: Highly styled code output component
-    dev_syntax = """
-def process_teachers_day_patch(days_delayed):
-    status = "Pending"
-    regret_index = 1.00
-    
-    if days_delayed > 0:
-        print("Initializing Heartfelt_Apology_Protocol...")
-        status = "Resolved via Streamlit"
-        # Continuous celebratory loops
-        while True:
-            trigger_balloons()
-            print("You are the absolute best teacher!")
-            break
             
-    return status, regret_index
+    # Checkbox closure confirmation
+    accepted = st.checkbox("Teacher, check this box if you accept my apology! 🤝")
+    if accepted:
+        st.balloons()
+        st.toast("Success! Apology logged successfully.", icon="💖")
+        st.success("Thank you so much! Wishing you an incredible journey ahead in China! 🏔️✨")
+    st.markdown("</div>", unsafe_allow_html=True)
 
-# Executing environment check
-process_teachers_day_patch(days_delayed=5)
-    """
-    st.code(dev_syntax, language="python")
-
-# 7. Bright Footer
+# 7. Bright, Minimalist Professional Footer
 st.write("---")
 st.markdown(
-    "<p style='text-align:center; color:#818cf8; font-family:monospace; font-size:13px;'>// Compiled successfully using Python & Streamlit | Runtime state: Flawless Appreciation</p>",
+    "<p style='text-align:center; color:#7f8c8d; font-family:sans-serif; font-size:13px;'>Built exclusively for a wonderful Computer Science Teacher. Have a safe and amazing stay in China!</p>",
     unsafe_allow_html=True
 )
