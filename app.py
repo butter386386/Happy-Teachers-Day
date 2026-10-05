@@ -1,119 +1,156 @@
 import streamlit as st
+import time
 
-# Set up page configurations
+# 1. Page Configuration with Premium Theme
 st.set_page_config(
-    page_title="Happy Teacher's Day!",
-    page_icon="🍎",
+    page_title="System.Exception: Sincerest Apologies",
+    page_icon="💻",
     layout="centered",
     initial_sidebar_state="collapsed",
 )
 
-# Custom CSS for styling the application beautifully
+# Custom premium styling via injecting structural modifications
 st.markdown(
     """
     <style>
-    .main {
-        background-color: #f7f9fc;
+    /* Global theme improvements */
+    .stApp {
+        background: linear-gradient(145deg, #0e1117 0%, #161b22 100%);
     }
-    .header-text {
-        color: #2E4053;
-        font-family: 'Georgia', serif;
-        text-align: center;
-        margin-bottom: 5px;
+    h1, h2, h3 {
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.5px;
     }
-    .sub-text {
-        color: #5D6D7E;
-        font-family: 'Arial', sans-serif;
-        text-align: center;
-        font-size: 18px;
-        margin-bottom: 25px;
-    }
-    .card {
-        background-color: #ffffff;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        border-left: 5px solid #3498DB;
+    /* Status Badge styling */
+    .status-badge {
+        background-color: rgba(241, 196, 15, 0.1);
+        color: #f1c40f;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-family: monospace;
+        border: 1px solid rgba(241, 196, 15, 0.3);
+        display: inline-block;
         margin-bottom: 20px;
     }
-    .card-title {
-        color: #2980B9;
-        font-family: 'Arial', sans-serif;
-        font-size: 22px;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-    .card-body {
-        color: #34495E;
-        font-size: 16px;
-        line-height: 1.6;
-    }
-    .footer {
+    /* Custom footer */
+    .developer-footer {
         text-align: center;
-        color: #95A5A6;
-        font-size: 14px;
-        margin-top: 5px;
+        font-family: monospace;
+        color: #8b949e;
+        font-size: 12px;
+        margin-top: 80px;
+        border-top: 1px solid #21262d;
+        padding-top: 20px;
     }
     </style>
     """,
-    unsafe_attributes_allowed=True,
+    unsafe_allow_html=True,
 )
 
-# Header Section
-st.markdown("<h1 class='header-text'>🎒 Happy Teacher's Day! 🍎</h1>", unsafe_attributes_allowed=True)
-st.markdown("<p class='sub-text'>Better late than never, to the best Computer Teacher!</p>", unsafe_attributes_allowed=True)
+# 2. Hero Header Block
+st.markdown("<div class='status-badge'>⚡ CRITICAL_PATCH_REQUIRED // LATE_WISH</div>", unsafe_allow_html=True)
+st.title("A Heartfelt Apology & Tribute")
+st.subheader("To an exceptional Mentor and Computer Science Teacher.")
 
-# Visual element: Trigger balloons right away to make it celebratory
-st.balloons()
+# Native Streamlit layout separation
+st.write("")
 
-# The Heartfelt Apology Card
-st.markdown(
-    """
-    <div class='card'>
-        <div class='card-title'>Dear Teacher, 💻✨</div>
-        <div class='card-body'>
-            I am incredibly sorry that I missed wishing you on Teacher's Day. 
-            You had to remind me, and I have been feeling completely terrible about it ever since! 
-            Please accept my sincerest apologies. You truly deserve to be celebrated every day for the patience and wisdom you bring to the classroom.
-        </div>
-    </div>
-    """,
-    unsafe_attributes_allowed=True,
-)
+# 3. Interactive Metrics Dashboard (Shows framework competency)
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.metric(label="Incident Level", value="High Priority", delta="Delayed Wish", delta_color="inverse")
+with col2:
+    st.metric(label="Student Regret", value="100%", delta="Feeling Sorry")
+with col3:
+    st.metric(label="Teacher Respect", value="∞", delta="Every Single Day")
 
-# The Appreciation Card
-st.markdown(
-    """
-    <div class='card' style='border-left: 5px solid #2ECC71;'>
-        <div class='card-title'>Why You Are Awesome! 🚀</div>
-        <div class='card-body'>
-            Thank you for making complex code simple, for debugging our errors with a smile, 
-            and for inspiring us to build amazing things. Your impact goes way beyond the computer lab!
-        </div>
-    </div>
-    """,
-    unsafe_attributes_allowed=True,
-)
-
-# Interactive Features
 st.write("---")
-st.markdown("### 🌟 Interaction Zone")
 
-# Button to let her trigger more animations
-if st.button("Click here for a surprise! 🎉"):
-    st.balloons()
-    st.confetti()  # Works automatically if streamlit elements update
-    st.success("You are the best teacher ever! 🙌")
+# 4. The Narrative Section (Professional & Sincere)
+st.markdown("### ✉️ The Message")
 
-# A small card where you can change the status
-accepted = st.checkbox("Teacher, have you accepted my apology? 🥺👉👈")
-if accepted:
-    st.balloons()
+with st.container(border=True):
     st.markdown(
-        "<div style='background-color:#D4EFDF; padding:15px; border-radius:10px; color:#196F3D; font-weight:bold; text-align:center;'>Yay! Thank you so much for being so forgiving! You're the best! 💖</div>", 
-        unsafe_attributes_allowed=True
+        """
+        Dear Teacher,
+        
+        I am incredibly sorry for missing your special day and requiring a reminder. It weighs heavily on me 
+        because you invest so much energy into debugging our mistakes, structuring our logic, and shaping 
+        how we approach technology. 
+        
+        Missing Teacher's Day was an oversight on my execution stack, and I sincerely apologize. 
+        Please know that your dedication, patience, and guidance do not go unnoticed. You deserve recognition 
+        not just on a single designated day, but every time a program compiles successfully because of what you taught us.
+        
+        Thank you for being an inspiring educator.
+        """
     )
 
-# Footer
-st.write("---")
-st.markdown("<p class='footer'>Made with Python, Streamlit, and a whole lot of respect.</p>", unsafe_attributes_allowed=True)
+st.write("")
+
+# 5. Technical Tribute (Clever Mock Code Block to impress a Developer/CS Teacher)
+st.markdown("### 🛠️ Execution Block: Why You're a Phenomenal Educator")
+
+tribute_code = """
+class DedicatedTeacher:
+    def __init__(self, name="My Computer Teacher"):
+        self.name = name
+        self.impact = "Infinite"
+        self.patience_level = float('inf')
+
+    def teach_class(self, students):
+        for student in students:
+            student.confidence += 10
+            student.syntax_errors = None
+            student.logical_thinking = True
+        return "Inspired Future Engineers"
+
+# Run life simulation
+instructor = DedicatedTeacher()
+print(f"Status: {instructor.teach_class(['Classroom'])}")
+"""
+st.code(tribute_code, language="python")
+
+st.write("")
+
+# 6. Interactive Deployment Zone (Smooth user experience elements)
+st.markdown("### 📥 Code Validation Zone")
+
+# Initialize session states safely for clean UI feedback loop
+if 'resolved' not in st.session_state:
+    st.session_state.resolved = False
+
+col_btn1, col_btn2 = st.columns([1, 2])
+
+with col_btn1:
+    if st.button("Deploy Celebration 🎉", use_container_width=True):
+        st.balloons()
+        st.toast("Compilation Successful! Celebration triggered.", icon="🚀")
+
+with col_btn2:
+    if not st.session_state.resolved:
+        if st.button("Accept Apology & Clear Error 🤝", use_container_width=True, type="primary"):
+            st.session_state.resolved = True
+            st.rerun()
+    else:
+        st.success("Apology Accepted! Exception Handler executed successfully.")
+
+# Dynamic response container based on interaction state
+if st.session_state.resolved:
+    with st.spinner("Recompiling workspace structure..."):
+        time.sleep(0.5)
+    st.balloons()
+    st.info("💡 Thank you for being understanding! Workspace returned to nominal status. You are the best!")
+
+# 7. Professional Dev Footer
+st.markdown(
+    """
+    <div class='developer-footer'>
+        // Build: SUCCESS | Stack: Streamlit, Python 3.11, Pure Respect<br>
+        Designed to express a deeply sincere apology to a brilliant guide.
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
