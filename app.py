@@ -1,32 +1,119 @@
 import streamlit as st
 
-st.set_page_config(page_title="Happy Teacher's Day!", page_icon="💻", layout="centered")
+# Set up page configurations
+st.set_page_config(
+    page_title="Happy Teacher's Day!",
+    page_icon="🍎",
+    layout="centered",
+    initial_sidebar_state="collapsed",
+)
 
-st.markdown("""
+# Custom CSS for styling the application beautifully
+st.markdown(
+    """
     <style>
-    .stApp { background-color: #0f172a; color: #f8fafc; }
-    h1 { color: #2dd4bf !important; }
-    .stButton>button { background-color: #0d9488 !important; color: white !important; border-radius: 20px; }
+    .main {
+        background-color: #f7f9fc;
+    }
+    .header-text {
+        color: #2E4053;
+        font-family: 'Georgia', serif;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .sub-text {
+        color: #5D6D7E;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+    .card {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border-left: 5px solid #3498DB;
+        margin-bottom: 20px;
+    }
+    .card-title {
+        color: #2980B9;
+        font-family: 'Arial', sans-serif;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .card-body {
+        color: #34495E;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    .footer {
+        text-align: center;
+        color: #95A5A6;
+        font-size: 14px;
+        margin-top: 5px;
+    }
     </style>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_attributes_allowed=True,
+)
 
-st.title("Happy Teacher's Day! ✨")
-st.caption("Dedicated to the best Computer Science Teacher: **Mam Kiran Nabi**")
+# Header Section
+st.markdown("<h1 class='header-text'>🎒 Happy Teacher's Day! 🍎</h1>", unsafe_attributes_allowed=True)
+st.markdown("<p class='sub-text'>Better late than never, to the best Computer Teacher!</p>", unsafe_attributes_allowed=True)
 
-st.code("""
-# apology_log.py
-try:
-    wish_teacher_on_time()
-except Exception as e:
-    print("Error 404: Timely Wish Not Found!")
-    print("Compiling heartfelt apology module...")
-""", language="python")
+# Visual element: Trigger balloons right away to make it celebratory
+st.balloons()
 
-st.error("### 🙏 I Am So Sorry, Mam!")
-st.write("I feel extremely guilty for missing the opportunity to wish you on time and needing your reminder. As your computer science student, forgetting feels like an unhandled bug in my system! Please forgive my delay—my respect and gratitude for you are always running 24/7.")
+# The Heartfelt Apology Card
+st.markdown(
+    """
+    <div class='card'>
+        <div class='card-title'>Dear Teacher, 💻✨</div>
+        <div class='card-body'>
+            I am incredibly sorry that I missed wishing you on Teacher's Day. 
+            You had to remind me, and I have been feeling completely terrible about it ever since! 
+            Please accept my sincerest apologies. You truly deserve to be celebrated every day for the patience and wisdom you bring to the classroom.
+        </div>
+    </div>
+    """,
+    unsafe_attributes_allowed=True,
+)
 
-st.info("### To My Favorite Tech Mentor 👩‍💻")
-st.write("Dear **Mam Kiran Nabi**,\n\nThank you for turning complex logic into simple understanding and making computer science so engaging. You don't just teach code; you inspire us to debug our mistakes and upgrade ourselves every day!")
+# The Appreciation Card
+st.markdown(
+    """
+    <div class='card' style='border-left: 5px solid #2ECC71;'>
+        <div class='card-title'>Why You Are Awesome! 🚀</div>
+        <div class='card-body'>
+            Thank you for making complex code simple, for debugging our errors with a smile, 
+            and for inspiring us to build amazing things. Your impact goes way beyond the computer lab!
+        </div>
+    </div>
+    """,
+    unsafe_attributes_allowed=True,
+)
 
-if st.button("Click to Compile Wish 🚀"):
-    st.success("🎉 System.out.println('Happy Teacher\\'s Day, Mam Kiran Nabi! You are legendary!'); 🎉")
+# Interactive Features
+st.write("---")
+st.markdown("### 🌟 Interaction Zone")
+
+# Button to let her trigger more animations
+if st.button("Click here for a surprise! 🎉"):
+    st.balloons()
+    st.confetti()  # Works automatically if streamlit elements update
+    st.success("You are the best teacher ever! 🙌")
+
+# A small card where you can change the status
+accepted = st.checkbox("Teacher, have you accepted my apology? 🥺👉👈")
+if accepted:
+    st.balloons()
+    st.markdown(
+        "<div style='background-color:#D4EFDF; padding:15px; border-radius:10px; color:#196F3D; font-weight:bold; text-align:center;'>Yay! Thank you so much for being so forgiving! You're the best! 💖</div>", 
+        unsafe_attributes_allowed=True
+    )
+
+# Footer
+st.write("---")
+st.markdown("<p class='footer'>Made with Python, Streamlit, and a whole lot of respect.</p>", unsafe_attributes_allowed=True)
